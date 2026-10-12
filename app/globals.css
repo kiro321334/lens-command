@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+body {
+  @apply bg-bg font-sans text-cream antialiased;
+}
+@layer components {
+  .eyebrow {
+    @apply flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.18em] text-lav;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-2 w-2 rounded-full bg-lav;
+  }
+  .h2 {
+    @apply mt-2 font-display text-4xl font-bold uppercase leading-none tracking-tight md:text-6xl;
+  }
+  .sub {
+    @apply mt-3 max-w-xl text-sm text-cream/85 md:text-base;
+  }
+  .card {
+    @apply rounded-3xl border border-line bg-panel;
+  }
+  .btn {
+    @apply inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-extrabold uppercase tracking-wide transition duration-300 hover:-translate-y-0.5 md:w-auto;
+  }
+  .btn-p {
+    @apply btn text-white shadow-[0_10px_34px_-8px_rgba(91,44,245,.9)];
+    background-image: linear-gradient(90deg, #5b2cf5 55%, #cfc3ff);
+  }
+  .btn-o {
+    @apply btn border border-line bg-panel hover:border-lav/60;
+  }
+  .chip {
+    @apply shrink-0 whitespace-nowrap rounded-xl border border-line bg-panel px-5 py-3 text-sm font-extrabold uppercase tracking-wide text-cream transition hover:border-lav/60;
+  }
+  .chip-s {
+    @apply shrink-0 whitespace-nowrap rounded-full bg-panel2 px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-lav transition hover:text-white;
+  }
+  .chip[aria-selected="true"],
+  .chip-s[aria-selected="true"] {
+    @apply border-transparent bg-violet text-white;
+  }
+  .tagb {
+    @apply flex items-center gap-1.5 rounded-lg bg-bg/80 px-2.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-lav backdrop-blur;
+  }
+}
+.noscroll::-webkit-scrollbar {
+  display: none;
+}
+.noscroll {
+  scrollbar-width: none;
+}
+.brk {
+  position: relative;
+}
+.brk::before,
+.brk::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  border-color: #c4b5fdaa;
+  z-index: 2;
+}
+.brk::before {
+  top: 10px;
+  left: 10px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.brk::after {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes glow {
+  50% {
+    box-shadow: 0 12px 46px -2px rgba(91, 44, 245, 1);
+  }
+}
+@keyframes zoom {
+  from {
+    transform: scale(1.07);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes ping {
+  0% {
+    box-shadow: 0 0 0 0 rgba(91, 44, 245, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 18px transparent;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+@keyframes sheet {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.d1 {
+  animation-delay: 0.12s;
+}
+.d2 {
+  animation-delay: 0.24s;
+}
+.d3 {
+  animation-delay: 0.36s;
+}
+.glow {
+  animation: glow 2.8s infinite;
+}
+.hero-img {
+  animation: zoom 1.8s ease-out both;
+}
+.ping {
+  animation: ping 1.8s infinite;
+}
+.blink {
+  animation: blink 1.4s infinite;
+}
+dialog[open] {
+  animation: sheet 0.35s ease-out;
+}
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: fadeUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
