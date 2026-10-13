@@ -16,7 +16,6 @@ export default function General({ c, set }) {
           }
           hint="يفضل PNG بخلفية شفافة"
         />
-        <Input label="Studio name" />
         <Input
           label="Studio name"
           value={s.name}
